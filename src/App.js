@@ -1,6 +1,6 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from './pages/Home/Home';
+import { Home, Shop, AboutUs, Blog, ContactUs } from './pages';
 
 function App() {
 
@@ -11,19 +11,19 @@ function App() {
     },
     {
       path: '/shop',
-      element: 'Shop'
+      element: <Shop/>
     },
     {
       path: '/aboutus',
-      element: 'About Us'
+      element: <AboutUs/>
     },
     {
       path: '/blog',
-      element: 'Blog'
+      element: <Blog/>
     },
     {
       path: '/contact',
-      element: 'ContactUs'
+      element: <ContactUs/>
     },
 
   ])

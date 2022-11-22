@@ -29,6 +29,8 @@ module.exports = {
         'shopNow': "url('/src/assets/img/button.png')",
         'bannerRepair': "url('/src/assets/img/banner/repair.webp')",
         'newsletterBanner': "url('/src/assets/img/banner/newsletter.png')",
+        'shopBanner': "url('/src/assets/img/banner/shopBanner.jpg')",
+        'blogBanner': "url('/src/assets/img/banner/blogBanner.jpg')",
       },
       colors: {
         primary: '#fff',

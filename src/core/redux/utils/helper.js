@@ -35,12 +35,12 @@ export const navbarLinks = [
         to: '/shop',
     },
     {
-        title: 'About Us',
-        to: '/aboutus',
-    },
-    {
         title: 'Blog',
         to: '/blog',
+    },
+    {
+        title: 'About',
+        to: '/aboutus',
     },
     {
         title: 'Contact Us',
@@ -79,6 +79,105 @@ export const featuresData = [
         title: '24/7 Support',
         img: f6,
         color: 'bg-feature6',
+    },
+];
+
+export const allProducts = [
+    {
+        title: 'Superstar Black',
+        img: featuredProduct1,
+        price: '5399',
+        brand: 'adidas'
+    },
+    {
+        title: 'Superstar White',
+        img: featuredProduct2,
+        price: '5399',
+        brand: 'adidas'
+    },
+    {
+        title: 'Superstar Cloud White',
+        img: featuredProduct3,
+        price: '4599',
+        brand: 'adidas'
+    },
+    {
+        title: 'NMD R1 Prime Blue',
+        img: featuredProduct4,
+        price: '5199',
+        brand: 'adidas'
+    },
+    {
+        title: 'AirForce 1 White',
+        img: featuredProduct5,
+        price: '4299',
+        brand: 'nike'
+    },
+    {
+        title: 'Superstar Black',
+        img: featuredProduct6,
+        price: '4999',
+        brand: 'nike'
+    },
+    {
+        title: 'Superstar Black',
+        img: featuredProduct7,
+        price: '3999',
+        brand: 'nike'
+    },
+    {
+        title: 'Superstar Black',
+        img: featuredProduct8,
+        price: '4199',
+        brand: 'nike'
+    },
+    {
+        title: 'Regiment L',
+        img: newArrivals1,
+        price: '1999',
+        brand: 'world balance'
+    },
+    {
+        title: 'Heria L',
+        img: newArrivals2,
+        price: '1799',
+        brand: 'world balance'
+    },
+    {
+        title: 'Marbella',
+        img: newArrivals3,
+        price: '1799',
+        brand: 'world balance'
+    },
+    {
+        title: 'Spin Cycle',
+        img: newArrivals4,
+        price: '2199',
+        brand: 'world balance'
+    },
+    {
+        title: 'Classic Leather',
+        img: newArrivals5,
+        price: '4899',
+        brand: 'reebok'
+    },
+    {
+        title: 'Classic Leather 1983 Vintage',
+        img: newArrivals6,
+        price: '4699',
+        brand: 'reebok'
+    },
+    {
+        title: 'Classic Nylon',
+        img: newArrivals7,
+        price: '4395',
+        brand: 'reebok'
+    },
+    {
+        title: 'Classic Leather Make It Yours',
+        img: newArrivals8,
+        price: '4195',
+        brand: 'reebok'
     },
 ];
 
@@ -131,6 +230,7 @@ export const featuredProductsHome = [
         price: '4199',
         brand: 'nike'
     },
+    
 ];
 
 export const newArrivalProducts = [

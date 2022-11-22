@@ -6,13 +6,15 @@ import {
   featuresData,
   newArrivalProducts,
 } from "../../core/redux/utils/helper";
+import {motion} from 'framer-motion';
 
 const Home = () => {
   return (
+    <motion.div initial={{opacity:0}} animate={{opacity: 1}} exit={{opacity: 0}}>
     <Box>
       <Navbar />
-      {/* hero banner section */}
-      <section className="bg-heroBanner mt-12 h-[95vh]">
+      {/* main hero banner section */}
+      <section className="bg-heroBanner h-[100vh]">
         <Box className="flex flex-col justify-center align-center px-24 h-full w-full">
           <h3 className="text-black text-3xl font-subtitle">Trade-in-offer</h3>
           <h3 className="text-black text-6xl font-semibold font-subtitle">
@@ -77,7 +79,7 @@ const Home = () => {
       <Newsletter />
       <Footer/>
     </Box>
-  );
+    </motion.div>);
 };
 
 export default Home;

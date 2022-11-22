@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <section className='mt-12 mb-12'>
       {/* contact us details */}
-      <Box className='flex flex-wrap justify-between px-24 gap-8'>
+      <Box className='flex flex-wrap justify-between px-8 lg:px-24 gap-8'>
         {/* 1st column */}
         <Box className='flex flex-col items-start'>
           <img src={logo} alt="footer logo" className='h-[40%] w-[20%]'/>
