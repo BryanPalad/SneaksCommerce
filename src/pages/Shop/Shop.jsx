@@ -8,7 +8,7 @@ const Shop = () => {
     <motion.div initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity: 0}}>
     <Box>
         <Navbar/>
-        <Banner bannerTitle='#stayhome' bannerSubtitle='Save more with coupons & up to 70% off!' />
+        <Banner bannerTitle='#stayhome' bannerSubtitle='Save more with coupons & up to 70% off!' bannerImage='bg-shopBanner' />
         <Products productsArray={allProducts}/>
         <Newsletter/>
         <Footer/>

@@ -1,3 +1,4 @@
+// features img
 import f1 from '../../../assets/img/features/f1.png';
 import f2 from '../../../assets/img/features/f2.png';
 import f3 from '../../../assets/img/features/f3.png';
@@ -5,6 +6,7 @@ import f4 from '../../../assets/img/features/f4.png';
 import f5 from '../../../assets/img/features/f5.png';
 import f6 from '../../../assets/img/features/f6.png';
 
+// products
 import featuredProduct1 from '../../../assets/img/shoes/adidasSuperstarShoesBlack.webp';
 import featuredProduct2 from '../../../assets/img/shoes/adidasSuperstarShoesWhite.webp';
 import featuredProduct3 from '../../../assets/img/shoes/adidasSuperStarCloudWhite.webp';
@@ -13,7 +15,6 @@ import featuredProduct5 from '../../../assets/img/shoes/nikeAirForce1White.webp'
 import featuredProduct6 from '../../../assets/img/shoes/nikeAirJordan1.webp';
 import featuredProduct7 from '../../../assets/img/shoes/nikeAirPresto.webp';
 import featuredProduct8 from '../../../assets/img/shoes/nikeAirMax270.webp';
-
 import newArrivals1 from '../../../assets/img/shoes/worldBalanceRegimentL.webp';
 import newArrivals2 from '../../../assets/img/shoes/worldBalanceHeriaL.webp';
 import newArrivals3 from '../../../assets/img/shoes/worldBalanceMarbella.webp';
@@ -23,8 +24,18 @@ import newArrivals6 from '../../../assets/img/shoes/reebokClassicLeather1983Vint
 import newArrivals7 from '../../../assets/img/shoes/reebokClassicNylon.webp';
 import newArrivals8 from '../../../assets/img/shoes/reebokClassicLeatherMakeItYours.webp';
 
+// social icons
 import {BsFacebook, BsTwitter, BsInstagram, BsPinterest, BsYoutube} from 'react-icons/bs';
 
+// blog images 
+import blog1 from '../../../assets/img/blog/b1.jpg';
+import blog2 from '../../../assets/img/blog/b2.jpg';
+import blog3 from '../../../assets/img/blog/b3.jpg';
+import blog4 from '../../../assets/img/blog/b4.jpg';
+import blog5 from '../../../assets/img/blog/b6.jpg';
+
+
+// NAVBAR DATA
 export const navbarLinks = [
     {
         title: 'Home',
@@ -48,7 +59,7 @@ export const navbarLinks = [
     },
 ];
 
-
+// FEATURES DATA
 export const featuresData = [
     {
         title: 'Free Shipping',
@@ -82,6 +93,7 @@ export const featuresData = [
     },
 ];
 
+// SHOP DATA
 export const allProducts = [
     {
         title: 'Superstar Black',
@@ -284,6 +296,7 @@ export const newArrivalProducts = [
     },
 ];
 
+// FOOTER DATA
 export const socialIcons = [
     {
         icon:<BsFacebook className='text-black text-lg hover:text-button duration-300'/>,
@@ -352,3 +365,32 @@ export const myAccountLinks = [
         link: '',
     },
 ];
+
+// BLOG DATA
+export const blogData = [
+    {
+        title: 'The Cotton-Jersey Zip-Up Hoodie',
+        description: 'Kickstarter man braid godard coloring book. Raclette waistcoat selfies yr wolf chartreuse hexagon irony, godard...',
+        image: blog1,
+    },
+    {
+        title: 'How to Style a Quiff',
+        description: 'Kickstarter man braid godard coloring book. Raclette waistcoat selfies yr wolf chartreuse hexagon irony, godard...',
+        image: blog2,
+    },
+    {
+        title: 'Must-Have Skater Girl Items',
+        description: 'Kickstarter man braid godard coloring book. Raclette waistcoat selfies yr wolf chartreuse hexagon irony, godard...',
+        image: blog3,
+    },
+    {
+        title: 'Rundawy-Inspired Trends',
+        description: 'Kickstarter man braid godard coloring book. Raclette waistcoat selfies yr wolf chartreuse hexagon irony, godard...',
+        image: blog4,
+    },
+    {
+        title: 'AW20 Menswear Trends',
+        description: 'Kickstarter man braid godard coloring book. Raclette waistcoat selfies yr wolf chartreuse hexagon irony, godard...',
+        image: blog5,
+    },
+]
