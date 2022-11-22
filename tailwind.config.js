@@ -31,6 +31,7 @@ module.exports = {
         'newsletterBanner': "url('/src/assets/img/banner/newsletter.png')",
         'shopBanner': "url('/src/assets/img/banner/shopBanner.jpg')",
         'blogBanner': "url('/src/assets/img/banner/blogBanner.jpg')",
+        'aboutUsBanner': "url('/src/assets/img/banner/aboutUsBanner.png')",
       },
       colors: {
         primary: '#fff',
