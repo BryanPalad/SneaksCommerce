@@ -2,13 +2,13 @@ import React from "react";
 import { Newsletter, Footer, Navbar, Banner } from "../../components";
 import { Box } from "@mui/material";
 import { motion } from "framer-motion";
-import { blogData } from "../../core/redux/utils/helper";
+import { blogData } from "../../core/utils/helper";
 
 const Blog = () => {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <Box>
         <Navbar />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
         <Banner bannerTitle="#readmore" bannerSubtitle="Read all case studies about our products!" bannerImage="bg-blogBanner"/>
         {/* blog section */}
         <Box className="px-12 lg:px-24 mt-32 w-full">
@@ -33,8 +33,8 @@ const Blog = () => {
         </Box>
         <Newsletter />
         <Footer />
+        </motion.div>
       </Box>
-    </motion.div>
   );
 };
 

@@ -7,9 +7,9 @@ import appClip from '../../assets/clip/1.mp4';
 
 const AboutUs = () => {
   return (
-    <motion.div initial={{opacity:0}} animate={{opacity: 1}} exit={{opacity: 0}}>
     <Box>
       <Navbar/>
+      <motion.div initial={{opacity:0}} animate={{opacity: 1}} exit={{opacity: 0}}>
         <Banner bannerTitle='#KnowUs' bannerSubtitle='Lorem ipsum dolor sit amet, consectetur' bannerImage='bg-aboutUsBanner'/>
         <Box className='flex flex-col items-center w-full gap-8 px-12 py-20 lg:gap-12 lg:px-24 lg:flex-row'>
            {/* about us pic */}
@@ -38,8 +38,9 @@ const AboutUs = () => {
         <Features/>
         <Newsletter/>
         <Footer/>
+        </motion.div>
     </Box>
-    </motion.div>)
+   )
 }
 
 export default AboutUs

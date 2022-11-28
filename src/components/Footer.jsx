@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Link } from '@mui/material';
 import logo from '../assets/img/logo.PNG';
-import { socialIcons, aboutUsLinks, myAccountLinks } from '../core/redux/utils/helper';
+import { socialIcons, aboutUsLinks, myAccountLinks } from '../core/utils/helper';
 import appstore from '../assets/img/pay/app.jpg';
 import playstore from '../assets/img/pay/play.jpg';
 import payment from '../assets/img/pay/pay.png';
@@ -28,8 +28,8 @@ const Footer = () => {
             {socialIcons.map((item, index) => {
               const {icon} = item;
               return (
-                <Box>
-                  <Link key={index}>{icon}</Link>
+                <Box key={index}>
+                  <Link>{icon}</Link>
                 </Box>
               )
             })}
@@ -42,9 +42,9 @@ const Footer = () => {
           <h4 className='text-xl font-main font-semibold mb-4'>About</h4>
             {aboutUsLinks.map((item, index) => {
               const {title, link} = item;
-              return (<>
-              <Link key={index} href='#' color='inherit' underline='none' className='hover:text-button duration-300 text-lg font-main'>{title}</Link>
-              </>)
+              return (<Box key={index}>
+              <Link href='#' color='inherit' underline='none' className='hover:text-button duration-300 text-lg font-main'>{title}</Link>
+              </Box>)
             })}
         </Box>
         {/* 3rd column */}
@@ -53,9 +53,9 @@ const Footer = () => {
           <h4 className='text-xl font-main font-semibold mb-4'>My Account</h4>
             {myAccountLinks.map((item, index) => {
               const {title, link} = item;
-              return (<>
-              <Link key={index} href='#' color='inherit' underline='none' className='hover:text-button duration-300 text-lg font-main'>{title}</Link>
-              </>)
+              return (<Box key={index}>
+              <Link href='#' color='inherit' underline='none' className='hover:text-button duration-300 text-lg font-main'>{title}</Link>
+              </Box>)
             })}
         </Box>
         {/* 4th column */}
