@@ -25,6 +25,7 @@ const Products = (props) => {
             title,
             origPrice,
             quantity: 1,
+            size: 39
         }
         dispatch(addExpense(data))
       }

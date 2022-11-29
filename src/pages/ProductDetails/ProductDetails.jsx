@@ -14,6 +14,11 @@ const ProductDetails = () => {
   const product = filtered[0];
 
   const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState(39);
+
+  const handleSize = (e) => {
+    setSize(prevState => prevState = e.target.value)
+  }
 
   const handleQuantity = (e) => {
     setQuantity(prevState => prevState = e.target.value);
@@ -27,6 +32,7 @@ const ProductDetails = () => {
         title,
         origPrice,
         quantity,
+        size,
     }
     dispatch(addExpense(data))
   }
@@ -67,9 +73,21 @@ const ProductDetails = () => {
             <h4 className="text-2xl lg:text-3xl font-subtitle font-semibold">{product.title}</h4>
             <h4 className="text lg lg:text-xl font-normal font-subtitle">{product.brand}</h4>
             <h4 className="text-xl lg:text-2xl font-subtitle text-red">₱{product.origPrice}</h4>
-            <Box className='flex space-x-2'>
             <input type="number" min='1' className='w-[80px] border border-black px-1 py-1' value={quantity} onChange={handleQuantity}/>
-            <button type='button' className="bg-button px-2 py-2 rounded-lg text-white font-medium font-subtitle" onClick={() => addToCart(product.id, product.img, product.brand, product.title, product.origPrice)}>Add To Cart</button>
+          
+            <h4 className="text-xl lg:text-xl font-subtitle">Select Size</h4>
+            <Box className="flex flex-col items-start space-x-0 space-y-2 lg:items-center lg:space-x-4 lg:space-y-0 lg:flex-row">
+            <select name="" id="" className='w-[80px] border border-black px-1 py-1' value={size} onChange={(e)=>handleSize(e)}>
+              <option>39</option>
+              <option>40</option>
+              <option>41</option>
+              <option>41.5</option>
+              <option>42</option>
+              <option>44</option>
+              <option>44.5</option>
+              <option>45</option>
+            </select>
+            <button type='button' className="w-[120px] bg-button px-2 py-2 rounded-lg text-white font-medium font-subtitle" onClick={() => addToCart(product.id, product.img, product.brand, product.title, product.origPrice)}>Add To Cart</button>
             </Box>
             <h4 className="text-xl lg:text-2xl text-black font-subtitle pt-8">~Product Details~</h4>
             <h4 className="text-lg lg:text-xl font-main font-normal text-justify">{product.description}</h4>

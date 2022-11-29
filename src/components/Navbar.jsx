@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import {BsTrash} from 'react-icons/bs';
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
-import { deleteExpense, updateExpense } from "../core/redux/cartSlice";
+import { deleteExpense, updateExpense, updateSize } from "../core/redux/cartSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,8 @@ const Navbar = () => {
   const [navMobile, setNavMobile] = useState(false);
   const [shoppingCart, setShoppingCart] = useState(false);
   const [cartSize, setCartSize] = useState(400);
- 
+  const [newSize, setNewSize] = useState();
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       return window.scrollY > 50 ? setBg(true) : setBg(false);
@@ -62,6 +63,17 @@ const Navbar = () => {
       id
     };
     dispatch(updateExpense(data));
+  }
+
+  const handleSize = (e, id) => {
+    const newSize = e.target.value;
+    setNewSize(prevState => prevState = newSize);
+    const data = {
+      size: newSize,
+      id
+    };
+    dispatch(updateSize(data));
+    
   }
 
   return (
@@ -150,15 +162,31 @@ const Navbar = () => {
                         </h4>
 
                         {cartObj.map((item,index) => {
-                          const {id, img, brand, origPrice, title, quantity} = item;
+                          const {id, img, brand, origPrice, title, quantity, size} = item;
                           return(
                           <>
-                            <Box className="flex items-center gap-6">
+                            <Box className="flex items-center gap-6 mb-4">
                               <img src={img} alt="" className='h-[30%] w-[30%] rounded-xl' key={index}/>
                               <Box className="flex flex-col text-left space-y-2">
                                 <h4>{title}</h4>
+                                <Box className='flex items-center space-x-4'>
                                 <h4>₱{origPrice}</h4>
                                 <input type="number" min='1' defaultValue={quantity} onChange={(e) => handleChange(e, id)} className='w-[40%] border border-black px-1 py-1'/>
+                                </Box>
+                                <Box className='flex titems-center space-x-6'>
+                                <h4>Size</h4>
+                                <select name="" id="" className='w-[80px] border border-black px-1 py-1' value={size} onChange={(e)=>handleSize(e, id)}>
+                                  <option>{size}</option>
+                                  <option>39</option>
+                                  <option>40</option>
+                                  <option>41</option>
+                                  <option>41.5</option>
+                                  <option>42</option>
+                                  <option>44</option>
+                                  <option>44.5</option>
+                                  <option>45</option>
+                                </select>
+                                </Box>
                               </Box>
                               <Box className='flex justify-center items-center text-center'>
                                 <BsTrash onClick={() => deleteItem(id)} className="text-2xl text-red cursor-pointer"/>

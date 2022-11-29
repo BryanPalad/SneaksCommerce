@@ -46,9 +46,17 @@ export const cartSlice = createSlice({
                 }
             })
         },
+        updateSize: (state, action) => {
+            state.cartList.map((expense) => {
+                if(expense.id === action.payload.id){
+                    expense.size = action.payload.size;
+                    localStorage.setItem('cart-list', JSON.stringify([...state.cartList]))
+                }
+            })
+        },
 
     }
 })
 
-export const {addExpense, deleteExpense, updateExpense} = cartSlice.actions;
+export const {addExpense, deleteExpense, updateExpense, updateSize} = cartSlice.actions;
 export default cartSlice.reducer;
