@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Newsletter, Footer, Navbar, Banner, Products } from '../../components';
 import { Box } from '@mui/material';
 import {motion} from 'framer-motion';
 import { allProducts } from '../../core/utils/helper';
+
 const Shop = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Box>
         <Navbar/>

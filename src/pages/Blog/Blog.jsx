@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Newsletter, Footer, Navbar, Banner } from "../../components";
 import { Box } from "@mui/material";
 import { motion } from "framer-motion";
 import { blogData } from "../../core/utils/helper";
 
 const Blog = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
       <Box>
         <Navbar />

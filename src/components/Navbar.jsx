@@ -24,11 +24,15 @@ const Navbar = () => {
   const [bg, setBg] = useState(false);
   const [navMobile, setNavMobile] = useState(false);
   const [shoppingCart, setShoppingCart] = useState(false);
+  const [cartSize, setCartSize] = useState(400);
  
   useEffect(() => {
     window.addEventListener("scroll", () => {
       return window.scrollY > 50 ? setBg(true) : setBg(false);
     });
+    window.addEventListener("resize", () => {
+      return window.innerWidth < 768 ? setCartSize(350) : setCartSize(400);
+    })
   },[cartObj]);
 
 
@@ -63,11 +67,9 @@ const Navbar = () => {
   return (
     <Box>
       <header
-        className={`${
-          bg ? "bg-primary" : "bg-transparent"
-        } duration-300 py-2 fixed top-0 left-0 w-full z-30`}
+        className={`flex items-center bg-white duration-300 fixed top-0 left-0 w-full z-30 h-auto lg:h-[12vh]`}
       >
-        <Box className="w-full px-12 lg:px-24">
+        <Box className="w-full px-12 py-4 lg:py-0 lg:px-24">
           <Box className="flex justify-between items-center">
             <Link href="#">
               <img src={logo} alt="" className="w-[150px]" />
@@ -117,7 +119,7 @@ const Navbar = () => {
                             className={({ isActive }) =>
                               isActive
                                 ? "text-red hidden font-subtitle md:block"
-                                : "hover:text-red duration-300 font-subtitle hidden md:block"
+                                : `text-black hover:text-red duration-300 font-subtitle hidden md:block`
                             }
                           >
                             {title}
@@ -138,7 +140,7 @@ const Navbar = () => {
                   <>
                     <motion.aside
                       initial={{ width: 0 }}
-                      animate={{ width: 400 }}
+                      animate={{ width: cartSize }}
                       exit={{ width: 0 }}
                       className="fixed top-0 right-0 z-50 h-full bg-white px-8 py-4 overflow-auto"
                     >

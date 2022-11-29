@@ -25,7 +25,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'heroBanner': "url('/src/assets/img/hero4.png')",
+        'heroBanner': "url('/src/assets/img/banner/shoe.jpeg')",
         'shopNow': "url('/src/assets/img/button.png')",
         'bannerRepair': "url('/src/assets/img/banner/repair.webp')",
         'newsletterBanner': "url('/src/assets/img/banner/newsletter.png')",

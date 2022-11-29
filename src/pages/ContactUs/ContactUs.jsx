@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Navbar, Newsletter, Footer, Banner } from '../../components'
 import { Box } from '@mui/material';
 import { motion } from 'framer-motion';
 import { contactusData } from '../../core/utils/helper';
 
 const ContactUs = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Box>
       <Navbar/>

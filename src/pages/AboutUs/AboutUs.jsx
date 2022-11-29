@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect}from 'react'
 import { Newsletter, Footer, Banner, Navbar, Features } from '../../components';
 import { Box, Link } from '@mui/material';
 import {motion} from 'framer-motion';
@@ -6,6 +6,9 @@ import aboutUsPic from '../../assets/img/about/a6.jpg';
 import appClip from '../../assets/clip/1.mp4';
 
 const AboutUs = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Box>
       <Navbar/>
