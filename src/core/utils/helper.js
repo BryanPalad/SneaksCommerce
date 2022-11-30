@@ -39,6 +39,8 @@ import blog4 from '../../assets/img/blog/b4.jpg';
 import blog5 from '../../assets/img/blog/b6.jpg';
 
 
+
+
 // NAVBAR DATA
 export const navbarLinks = [
     {

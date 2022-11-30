@@ -55,8 +55,32 @@ export const cartSlice = createSlice({
             })
         },
 
+        checkOut: (state, action) => {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Proceed to check out'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    const arrayLength = state.cartList.length;
+                    for (let i = 0; i < arrayLength; i++){
+                        state.cartList.pop(i);
+                        Swal.fire(
+                            "Place Order Sucessful",
+                            '',
+                            'success'
+                        )
+                   }
+                }
+              })
+        }
+
     }
 })
 
-export const {addExpense, deleteExpense, updateExpense, updateSize} = cartSlice.actions;
+export const {addExpense, deleteExpense, updateExpense, updateSize, checkOut} = cartSlice.actions;
 export default cartSlice.reducer;
