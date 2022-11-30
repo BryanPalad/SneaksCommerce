@@ -366,6 +366,8 @@ export const newArrivalProducts = [
     },
 ];
 
+export const shoeSizes = [39,40,41.5,42,42.5,43,44,45];
+
 // FOOTER DATA
 export const socialIcons = [
     {

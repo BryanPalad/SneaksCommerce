@@ -3,7 +3,7 @@ import logo from "../assets/img/logo.PNG";
 import { Box, Link } from "@mui/material";
 import { BiShoppingBag } from "react-icons/bi";
 import { AiOutlineMenuFold } from "react-icons/ai";
-import { navbarLinks } from "../core/utils/helper";
+import { navbarLinks, shoeSizes } from "../core/utils/helper";
 import { NavLink } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import { motion } from "framer-motion";
@@ -21,16 +21,12 @@ const Navbar = () => {
   },0);  
 
 
-  const [bg, setBg] = useState(false);
   const [navMobile, setNavMobile] = useState(false);
   const [shoppingCart, setShoppingCart] = useState(false);
   const [cartSize, setCartSize] = useState(400);
   const [newSize, setNewSize] = useState();
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      return window.scrollY > 50 ? setBg(true) : setBg(false);
-    });
     window.addEventListener("resize", () => {
       return window.innerWidth < 768 ? setCartSize(350) : setCartSize(400);
     })
@@ -108,6 +104,7 @@ const Navbar = () => {
                                 return (
                                   <Box key={index}>
                                     <NavLink
+                                      key={index}
                                       to={to}
                                       className={({ isActive }) =>
                                         isActive
@@ -168,7 +165,7 @@ const Navbar = () => {
                           const {id, img, brand, origPrice, title, quantity, size} = item;
                           return(
                           <>
-                          <Box className='flex-col'>
+                          <Box className='flex-col' key={index}>
                           <h4 className='font-main mb-2 text-button'>{title}</h4>
                             <Box className="flex items-center gap-6 mb-4">
                             
@@ -183,14 +180,13 @@ const Navbar = () => {
                                 <h4 className='font-subtitle'>Size</h4>
                                 <select name="" id="" className='w-[80px] border border-black px-1 py-1' value={size} onChange={(e)=>handleSize(e, id)}>
                                   <option>{size}</option>
-                                  <option>39</option>
-                                  <option>40</option>
-                                  <option>41</option>
-                                  <option>41.5</option>
-                                  <option>42</option>
-                                  <option>44</option>
-                                  <option>44.5</option>
-                                  <option>45</option>
+                                  {shoeSizes.map((item, index) => {
+                                    return (
+                                      <>
+                                      <option key={index}>{item}</option>
+                                      </>
+                                    )
+                                  })}
                                 </select>
                                 </Box>
                               </Box>

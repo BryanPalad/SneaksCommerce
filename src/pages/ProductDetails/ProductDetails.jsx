@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from "react";
 import { Box } from "@mui/material";
 import { Footer, Navbar, Newsletter } from "../../components";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { allProducts } from "../../core/utils/helper";
+import { allProducts, shoeSizes } from "../../core/utils/helper";
 import { addExpense } from "../../core/redux/cartSlice";
 import { useDispatch } from "react-redux";
+import {FiArrowLeft, FiArrowRight} from 'react-icons/fi';
 
 const ProductDetails = () => {
-  const paramsId = useParams();
+  const paramsId = useParams(); 
+  var parsedId = parseInt(paramsId);
   const dispatch = useDispatch();
   const filtered = allProducts.filter(product => product.id == paramsId.id);
   const product = filtered[0];
@@ -50,6 +52,7 @@ const ProductDetails = () => {
         exit={{ opacity: 0 }}
       >
         <Box className="flex flex-col justify-between items-center gap-8 px-12 lg:px-24 h-auto w-full lg:h-[90vh] lg:gap-8 lg:flex-row">
+
           {/* left side */}
           <Box className='flex flex-col w-full lg:w-[40%] space-y-1'>
             <img src={filtered[0].img} alt="" className="lg:w-[80%]"/>
@@ -78,14 +81,13 @@ const ProductDetails = () => {
             <h4 className="text-xl lg:text-xl font-subtitle">Select Size</h4>
             <Box className="flex flex-col items-start space-x-0 space-y-2 lg:items-center lg:space-x-4 lg:space-y-0 lg:flex-row">
             <select name="" id="" className='w-[80px] border border-black px-1 py-1' value={size} onChange={(e)=>handleSize(e)}>
-              <option>39</option>
-              <option>40</option>
-              <option>41</option>
-              <option>41.5</option>
-              <option>42</option>
-              <option>44</option>
-              <option>44.5</option>
-              <option>45</option>
+              {shoeSizes.map((item, index) => {
+                return (
+                  <>
+                  <option key={index}>{item}</option>
+                  </>
+                )
+              })}
             </select>
             <button type='button' className="w-[120px] bg-button px-2 py-2 rounded-lg text-white font-medium font-subtitle" onClick={() => addToCart(product.id, product.img, product.brand, product.title, product.origPrice)}>Add To Cart</button>
             </Box>
