@@ -9,6 +9,10 @@ const initialList = () => {
     return expenses;
 }
 
+const paymentLink = process.env.REACT_APP_API_PAYMENT;
+
+console.log(paymentLink);
+
 const initialState = {
     cartList: initialList(),
 }
@@ -58,12 +62,13 @@ export const cartSlice = createSlice({
         checkOut: (state, action) => {
             const arrayLength = state.cartList.length;
             for (let i = 0; i < arrayLength; i++){
-                state.cartList.shift(i);
-                Swal.fire(
-                    'Place Order Sucessful!',
-                    '',
-                    'success'
-                  )
+                // state.cartList.shift(i);
+                window.open(process.env.REACT_APP_API_PAYMENT);
+                // Swal.fire(
+                //     'Place Order Sucessful!',
+                //     '',
+                //     'success'
+                //   )
            } 
         }
 

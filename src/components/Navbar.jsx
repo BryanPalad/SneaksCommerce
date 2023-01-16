@@ -74,6 +74,7 @@ const Navbar = () => {
 
   const placeOrder = () => {
     dispatch(checkOut());
+    console.log(process.env.REACT_APP_PAYMENT_LINK);
   }
   return (
     <Box>
