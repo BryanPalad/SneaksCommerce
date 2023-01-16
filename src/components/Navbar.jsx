@@ -73,8 +73,8 @@ const Navbar = () => {
   }
 
   const placeOrder = () => {
-    dispatch(checkOut());
-    console.log(process.env.REACT_APP_PAYMENT_LINK);
+    // dispatch(checkOut());
+    window.open(process.env.REACT_APP_API_PAYMENT);
   }
   return (
     <Box>
