@@ -62,9 +62,9 @@ const Navbar = () => {
     if(value === 'grab') {
       window.open("https://weblogin.grab.com/auth?acr_values=consent_ctx%3AcountryCode%3DPH%2Ccurrency%3DPHP&auth_endpoint=https%3A%2F%2Fpartner-api.grab.com%2Fgrabid%2Fv1%2Foauth2%2Fauthorize&browser=IE%3A109.0&client_id=33437db2de45457ca3f5888bab187121&code_challenge=4oCVpaSOEzIRLSqFwa9bq1gXYiLKLXFRiWBbhl3PJZU&code_challenge_method=S256&ctx_id=241a4ec24d384c60aa75c55dfe56278b&device_type=Computer&forwardedHost=partner-api.grab.com&gw=pgw&nonce=f5b21eed-1766-4ad3-9387-d2ac47edee07&redirect_uri=https%3A%2F%2Fgrabpay-connector-live.xendit.co%2Fredirect&request=eyJhbGciOiAibm9uZSJ9.eyJjbGFpbXMiOnsidHJhbnNhY3Rpb24iOnsidHhJRCI6ImI4ZTBmOGQ0NzIzNjRmYTI4NTcwYjQwNzcxODczYzZjIn19fQ.&request_id=e92dcff8-68dc-4b3c-9a41-142f4cbcfccd&response_type=code&scope=payment.one_time_charge&state=cb2fa344-8a91-49b5-966b-28c9ceabb0e6");
     } else if (value === 'seveneleven'){
-      alert('please provide link for 7/11');
+      alert('7/11 payment still in development');
     } else if(value === 'gcash') {
-      alert('please provide link for gcash');
+      alert('gcash payment still in development');
     } else {
       handleClose();
       Swal.fire({
