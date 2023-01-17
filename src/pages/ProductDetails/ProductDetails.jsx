@@ -44,7 +44,7 @@ const ProductDetails = () => {
   }, [])
 
   return (
-    <Box className='mt-24'>
+    <Box className='mt-12'>
       <Navbar />
       <motion.div
         initial={{ opacity: 0 }}
@@ -52,7 +52,7 @@ const ProductDetails = () => {
         exit={{ opacity: 0 }}
       >
         <Box className="flex flex-col justify-between items-center gap-8 px-12 lg:px-24 h-auto w-full lg:h-[90vh] lg:gap-8 lg:flex-row">
-
+          
           {/* left side */}
           <Box className='flex flex-col w-full lg:w-[40%] space-y-1'>
             <img src={filtered[0].img} alt="" className="lg:w-[80%]"/>
