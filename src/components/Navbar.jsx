@@ -24,10 +24,12 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 
 import gcash from "../assets/img/payment/gcash.webp";
 import grab from "../assets/img/payment/grab.png";
 import paymaya from "../assets/img/payment/paymaya.png";
+import seveneleven from "../assets/img/payment/seveneleven.png";
 import cod from "../assets/img/payment/cod.png";
 
 import Swal from "sweetalert2";
@@ -58,7 +60,7 @@ const Navbar = () => {
 
   const handlePay = () => {
     if(value === 'grab') {
-      window.open('https://weblogin.grab.com/auth?acr_values=consent_ctx%3AcountryCode%3DPH%2Ccurrency%3DPHP&auth_endpoint=https%3A%2F%2Fpartner-api.grab.com%2Fgrabid%2Fv1%2Foauth2%2Fauthorize&browser=IE%3A109.0&client_id=33437db2de45457ca3f5888bab187121&code_challenge=OVLJn0GT2HIKVqqeKJfN3rgGbybOUDTyJs6dlDZta6w&code_challenge_method=S256&ctx_id=37997391a7064b64bfa288c6da34dc38&device_type=Computer&forwardedHost=partner-api.grab.com&gw=pgw&nonce=5259526f-675b-440a-89ac-5bd85dbacee1&redirect_uri=https%3A%2F%2Fgrabpay-connector-live.xendit.co%2Fredirect&request=eyJhbGciOiAibm9uZSJ9.eyJjbGFpbXMiOnsidHJhbnNhY3Rpb24iOnsidHhJRCI6IjBjMWI3NmFhNWFlZDQzMjY4YzQ4YWNlNTgzMjdlMjRhIn19fQ.&request_id=80ab3b40-ca2e-41bb-a87b-91961f9b278f&response_type=code&scope=payment.one_time_charge&state=db618f5e-401a-4d29-a781-d1580eb16929');
+      window.open("https://weblogin.grab.com/auth?acr_values=consent_ctx%3AcountryCode%3DPH%2Ccurrency%3DPHP&auth_endpoint=https%3A%2F%2Fpartner-api.grab.com%2Fgrabid%2Fv1%2Foauth2%2Fauthorize&browser=IE%3A109.0&client_id=33437db2de45457ca3f5888bab187121&code_challenge=OVLJn0GT2HIKVqqeKJfN3rgGbybOUDTyJs6dlDZta6w&code_challenge_method=S256&ctx_id=37997391a7064b64bfa288c6da34dc38&device_type=Computer&forwardedHost=partner-api.grab.com&gw=pgw&nonce=5259526f-675b-440a-89ac-5bd85dbacee1&redirect_uri=https%3A%2F%2Fgrabpay-connector-live.xendit.co%2Fredirect&request=eyJhbGciOiAibm9uZSJ9.eyJjbGFpbXMiOnsidHJhbnNhY3Rpb24iOnsidHhJRCI6IjBjMWI3NmFhNWFlZDQzMjY4YzQ4YWNlNTgzMjdlMjRhIn19fQ.&request_id=80ab3b40-ca2e-41bb-a87b-91961f9b278f&response_type=code&scope=payment.one_time_charge&state=db618f5e-401a-4d29-a781-d1580eb16929");
     } else if (value === 'paymaya'){
       alert('paymaya payment still in development');
     } else if(value === 'gcash') {
