@@ -24,12 +24,10 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 
 import gcash from "../assets/img/payment/gcash.webp";
 import grab from "../assets/img/payment/grab.png";
 import paymaya from "../assets/img/payment/paymaya.png";
-import seveneleven from "../assets/img/payment/seveneleven.png";
 import cod from "../assets/img/payment/cod.png";
 
 import Swal from "sweetalert2";

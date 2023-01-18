@@ -33,7 +33,7 @@ export const cartSlice = createSlice({
                 state.cartList.push(action.payload);
                 Swal.fire(
                     action.payload.title,
-                    'Successfully Added!',
+                    'Successfully added to cart!',
                     'success'
                   )
             }
