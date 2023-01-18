@@ -18,7 +18,6 @@ import {
 } from "../core/redux/cartSlice";
 // modal
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 // radio button
 import Radio from "@mui/material/Radio";
@@ -29,6 +28,7 @@ import FormLabel from "@mui/material/FormLabel";
 
 import gcash from "../assets/img/payment/gcash.webp";
 import grab from "../assets/img/payment/grab.png";
+import paymaya from "../assets/img/payment/paymaya.png";
 import seveneleven from "../assets/img/payment/seveneleven.png";
 import cod from "../assets/img/payment/cod.png";
 
@@ -60,9 +60,9 @@ const Navbar = () => {
 
   const handlePay = () => {
     if(value === 'grab') {
-      window.open("https://weblogin.grab.com/auth?acr_values=consent_ctx%3AcountryCode%3DPH%2Ccurrency%3DPHP&auth_endpoint=https%3A%2F%2Fpartner-api.grab.com%2Fgrabid%2Fv1%2Foauth2%2Fauthorize&browser=IE%3A109.0&client_id=33437db2de45457ca3f5888bab187121&code_challenge=4oCVpaSOEzIRLSqFwa9bq1gXYiLKLXFRiWBbhl3PJZU&code_challenge_method=S256&ctx_id=241a4ec24d384c60aa75c55dfe56278b&device_type=Computer&forwardedHost=partner-api.grab.com&gw=pgw&nonce=f5b21eed-1766-4ad3-9387-d2ac47edee07&redirect_uri=https%3A%2F%2Fgrabpay-connector-live.xendit.co%2Fredirect&request=eyJhbGciOiAibm9uZSJ9.eyJjbGFpbXMiOnsidHJhbnNhY3Rpb24iOnsidHhJRCI6ImI4ZTBmOGQ0NzIzNjRmYTI4NTcwYjQwNzcxODczYzZjIn19fQ.&request_id=e92dcff8-68dc-4b3c-9a41-142f4cbcfccd&response_type=code&scope=payment.one_time_charge&state=cb2fa344-8a91-49b5-966b-28c9ceabb0e6");
-    } else if (value === 'seveneleven'){
-      alert('7/11 payment still in development');
+      window.open('https://weblogin.grab.com/auth?acr_values=consent_ctx%3AcountryCode%3DPH%2Ccurrency%3DPHP&auth_endpoint=https%3A%2F%2Fpartner-api.grab.com%2Fgrabid%2Fv1%2Foauth2%2Fauthorize&browser=IE%3A109.0&client_id=33437db2de45457ca3f5888bab187121&code_challenge=4oCVpaSOEzIRLSqFwa9bq1gXYiLKLXFRiWBbhl3PJZU&code_challenge_method=S256&ctx_id=241a4ec24d384c60aa75c55dfe56278b&device_type=Computer&forwardedHost=partner-api.grab.com&gw=pgw&nonce=f5b21eed-1766-4ad3-9387-d2ac47edee07&redirect_uri=https%3A%2F%2Fgrabpay-connector-live.xendit.co%2Fredirect&request=eyJhbGciOiAibm9uZSJ9.eyJjbGFpbXMiOnsidHJhbnNhY3Rpb24iOnsidHhJRCI6ImI4ZTBmOGQ0NzIzNjRmYTI4NTcwYjQwNzcxODczYzZjIn19fQ.&request_id=e92dcff8-68dc-4b3c-9a41-142f4cbcfccd&response_type=code&scope=payment.one_time_charge&state=cb2fa344-8a91-49b5-966b-28c9ceabb0e6');
+    } else if (value === 'paymaya'){
+      alert('paymaya payment still in development');
     } else if(value === 'gcash') {
       alert('gcash payment still in development');
     } else {
@@ -72,6 +72,7 @@ const Navbar = () => {
         title: 'Thank You For Shopping!',
         text: 'We will send you an sms/email for more details of your order.',
       })
+      dispatch(checkOut());
     }
   }
 
@@ -171,8 +172,8 @@ const Navbar = () => {
               </Box>
 
               <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-300">
-                <FormControlLabel value="seveneleven" control={<Radio />} label="7/11"/>
-                <img src={seveneleven} alt="7/11" className="w-1/4 py-2" />
+                <FormControlLabel value="paymaya" control={<Radio />} label="PayMaya"/>
+                <img src={paymaya} alt="paymaya" className="w-1/4 py-2" />
               </Box>
 
               <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-300">
