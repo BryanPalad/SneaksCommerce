@@ -63,6 +63,7 @@ export const cartSlice = createSlice({
             const arrayLength = state.cartList.length;
             for (let i = 0; i < arrayLength; i++){
                 state.cartList.shift(i);
+                localStorage.setItem('cart-list', JSON.stringify([...state.cartList]));
                 // window.location.replace(process.env.REACT_APP_API_PAYMENT);
                 // Swal.fire(
                 //     'Place Order Sucessful!',

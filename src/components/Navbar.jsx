@@ -156,8 +156,8 @@ const Navbar = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <h2 className="text-xl font-subtitle font-semibold text-center mb-4">
-            Select Payment Method
+          <h2 className="text-xl font-subtitle font-semibold text-center mb-6">
+            Payment Method
           </h2>
           <FormControl>
             <RadioGroup
@@ -166,22 +166,25 @@ const Navbar = () => {
               value={value}
               onChange={handleChangePayment}
             >
-              <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-300">
+              <h2 className="text-normal font-subtitle mb-2">
+                How do you want to pay?
+              </h2>
+              <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-500 rounded-lg hover:border-indigo-400 duration-300">
                 <FormControlLabel value="grab" control={<Radio />} label="Grab"/>
                 <img src={grab} alt="grab" className="w-1/4 py-2" />
               </Box>
 
-              <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-300">
+              <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-300 rounded-lg hover:border-indigo-400 duration-300">
                 <FormControlLabel value="paymaya" control={<Radio />} label="PayMaya"/>
                 <img src={paymaya} alt="paymaya" className="w-1/4 py-2" />
               </Box>
 
-              <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-300">
+              <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-300 rounded-lg hover:border-indigo-400 duration-300">
                 <FormControlLabel value="gcash" control={<Radio />} label='Gcash'/>
                 <img src={gcash} alt="gcash" className="w-1/4 py-2" />
               </Box>
               
-              <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-300">
+              <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-300 rounded-lg hover:border-indigo-400 duration-300">
                 <FormControlLabel value="cod" control={<Radio />} label='Cash on Delivery'/>
                 <img src={cod} alt="cod" className="w-1/4" />
               </Box>
@@ -189,6 +192,9 @@ const Navbar = () => {
             </RadioGroup>
 
           </FormControl>
+          <h4 className="text-lg font-semibold font-subtitle text-right py-2">
+              Total: <span className="font-normal">₱{sum}.00</span>
+          </h4>
           <Box className="mt-4 flex items-center gap-2">
             <button
               className="text-lg w-1/2 border border-gray-200 px-2 py-1 rounded-lg bg-button text-white"
@@ -368,7 +374,7 @@ const Navbar = () => {
                             Place order
                           </button>
                           <h4 className="text-xl font-semibold font-subtitle text-right">
-                            Total <span className="font-normal">₱{sum}</span>
+                            Total: <span className="font-normal">₱{sum}</span>
                           </h4>
                         </Box>
                       </Box>
