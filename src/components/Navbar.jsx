@@ -295,7 +295,11 @@ const Navbar = () => {
                         <h4 className="text-2xl font-semibold font-main mb-8">
                           Your Cart
                         </h4>
-
+                        {sum == 0 ? (
+                          <>
+                          <h4>No Items Selected</h4>
+                          </>
+                        ):(<></>)}
                         {cartObj.map((item, index) => {
                           const {
                             id,
@@ -309,7 +313,7 @@ const Navbar = () => {
                           return (
                             <>
                               <Box className="flex-col" key={index}>
-                                <h4 className="font-main mb-2 text-button">
+                                <h4 className="font-main mb-2 text-button text-left">
                                   {title}
                                 </h4>
                                 <Box className="flex items-center gap-6 mb-4">
@@ -362,10 +366,11 @@ const Navbar = () => {
                                   </Box>
                                 </Box>
                               </Box>
+                              <hr/>
                             </>
                           );
                         })}
-                        <hr />
+
                         <Box className="flex justify-between items-center">
                           <button
                             className="text-lg border border-gray-200 px-2 py-1 rounded-lg bg-button text-white"
