@@ -26,6 +26,13 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
+// tabs 
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+
+// icons
 import gcash from "../assets/img/payment/gcash.webp";
 import grab from "../assets/img/payment/grab.png";
 import paymaya from "../assets/img/payment/paymaya.png";
@@ -62,7 +69,7 @@ const Navbar = () => {
     if(value === 'grab') {
       window.open("https://weblogin.grab.com/auth?acr_values=consent_ctx%3AcountryCode%3DPH%2Ccurrency%3DPHP&auth_endpoint=https%3A%2F%2Fpartner-api.grab.com%2Fgrabid%2Fv1%2Foauth2%2Fauthorize&browser=IE%3A109.0&client_id=33437db2de45457ca3f5888bab187121&code_challenge=OVLJn0GT2HIKVqqeKJfN3rgGbybOUDTyJs6dlDZta6w&code_challenge_method=S256&ctx_id=37997391a7064b64bfa288c6da34dc38&device_type=Computer&forwardedHost=partner-api.grab.com&gw=pgw&nonce=5259526f-675b-440a-89ac-5bd85dbacee1&redirect_uri=https%3A%2F%2Fgrabpay-connector-live.xendit.co%2Fredirect&request=eyJhbGciOiAibm9uZSJ9.eyJjbGFpbXMiOnsidHJhbnNhY3Rpb24iOnsidHhJRCI6IjBjMWI3NmFhNWFlZDQzMjY4YzQ4YWNlNTgzMjdlMjRhIn19fQ.&request_id=80ab3b40-ca2e-41bb-a87b-91961f9b278f&response_type=code&scope=payment.one_time_charge&state=db618f5e-401a-4d29-a781-d1580eb16929");
     } else if (value === 'paymaya'){
-      alert('paymaya payment still in development');
+      window.open("https://payments.maya.ph/paymaya/payment?id=802e8998-e1e0-4d7e-a335-55bf4f61fbad");
     } else if(value === 'gcash') {
       alert('gcash payment still in development');
     } else {
@@ -174,8 +181,8 @@ const Navbar = () => {
                 <img src={grab} alt="grab" className="w-1/4 py-2" />
               </Box>
 
-              <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-300 rounded-lg hover:border-indigo-400 duration-300">
-                <FormControlLabel value="paymaya" control={<Radio />} label="PayMaya"/>
+              <Box className="flex w-full items-center justify-around gap-2 mb-1 py-4 border border-black-300 rounded-lg hover:border-indigo-400 duration-300">
+                <FormControlLabel value="paymaya" control={<Radio />} label="Maya"/>
                 <img src={paymaya} alt="paymaya" className="w-1/4 py-2" />
               </Box>
 
@@ -210,6 +217,8 @@ const Navbar = () => {
             </button>
           </Box>
         </Box>
+
+        
       </Modal>
 
       <header
