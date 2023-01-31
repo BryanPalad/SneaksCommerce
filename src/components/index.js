@@ -5,3 +5,4 @@ export {default as Products} from './Products';
 export {default as Footer} from './Footer';
 export {default as Banner} from './Banner';
 export {default as Pagination} from './Pagination';
+export {default as AppTab} from './Tabs';

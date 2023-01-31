@@ -16,9 +16,11 @@ import {
   updateSize,
   checkOut,
 } from "../core/redux/cartSlice";
+
 // modal
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
+
 // radio button
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -26,20 +28,17 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
-// tabs 
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-
 // icons
 import gcash from "../assets/img/payment/gcash.webp";
 import grab from "../assets/img/payment/grab.png";
 import paymaya from "../assets/img/payment/paymaya.png";
 import seveneleven from "../assets/img/payment/seveneleven.png";
 import cod from "../assets/img/payment/cod.png";
+import bpi from "../assets/img/payment/bpi.png";
+import ubp from "../assets/img/payment/ubp.png";
 
 import Swal from "sweetalert2";
+import AppTab from "./Tabs";
 
 const style = {
   position: "absolute",
@@ -66,22 +65,30 @@ const Navbar = () => {
   };
 
   const handlePay = () => {
-    if(value === 'grab') {
-      window.open("https://weblogin.grab.com/auth?acr_values=consent_ctx%3AcountryCode%3DPH%2Ccurrency%3DPHP&auth_endpoint=https%3A%2F%2Fpartner-api.grab.com%2Fgrabid%2Fv1%2Foauth2%2Fauthorize&browser=IE%3A109.0&client_id=33437db2de45457ca3f5888bab187121&code_challenge=OVLJn0GT2HIKVqqeKJfN3rgGbybOUDTyJs6dlDZta6w&code_challenge_method=S256&ctx_id=37997391a7064b64bfa288c6da34dc38&device_type=Computer&forwardedHost=partner-api.grab.com&gw=pgw&nonce=5259526f-675b-440a-89ac-5bd85dbacee1&redirect_uri=https%3A%2F%2Fgrabpay-connector-live.xendit.co%2Fredirect&request=eyJhbGciOiAibm9uZSJ9.eyJjbGFpbXMiOnsidHJhbnNhY3Rpb24iOnsidHhJRCI6IjBjMWI3NmFhNWFlZDQzMjY4YzQ4YWNlNTgzMjdlMjRhIn19fQ.&request_id=80ab3b40-ca2e-41bb-a87b-91961f9b278f&response_type=code&scope=payment.one_time_charge&state=db618f5e-401a-4d29-a781-d1580eb16929");
-    } else if (value === 'paymaya'){
-      window.open("https://payments.maya.ph/paymaya/payment?id=802e8998-e1e0-4d7e-a335-55bf4f61fbad");
-    } else if(value === 'gcash') {
-      alert('gcash payment still in development');
+    if (value === "grab") {
+      window.open(
+        "https://weblogin.grab.com/auth?acr_values=consent_ctx%3AcountryCode%3DPH%2Ccurrency%3DPHP&auth_endpoint=https%3A%2F%2Fpartner-api.grab.com%2Fgrabid%2Fv1%2Foauth2%2Fauthorize&browser=IE%3A109.0&client_id=33437db2de45457ca3f5888bab187121&code_challenge=OVLJn0GT2HIKVqqeKJfN3rgGbybOUDTyJs6dlDZta6w&code_challenge_method=S256&ctx_id=37997391a7064b64bfa288c6da34dc38&device_type=Computer&forwardedHost=partner-api.grab.com&gw=pgw&nonce=5259526f-675b-440a-89ac-5bd85dbacee1&redirect_uri=https%3A%2F%2Fgrabpay-connector-live.xendit.co%2Fredirect&request=eyJhbGciOiAibm9uZSJ9.eyJjbGFpbXMiOnsidHJhbnNhY3Rpb24iOnsidHhJRCI6IjBjMWI3NmFhNWFlZDQzMjY4YzQ4YWNlNTgzMjdlMjRhIn19fQ.&request_id=80ab3b40-ca2e-41bb-a87b-91961f9b278f&response_type=code&scope=payment.one_time_charge&state=db618f5e-401a-4d29-a781-d1580eb16929"
+      );
+    } else if (value === "paymaya") {
+      window.open(
+        "https://payments.maya.ph/paymaya/payment?id=802e8998-e1e0-4d7e-a335-55bf4f61fbad"
+      );
+    } else if (value === "gcash") {
+      alert("gcash payment still in development");
+    } else if (value === "bpi"){
+      alert("bpi payment still in development");
+    } else if (value === "ubp") {
+      alert("unionbank payment still in development");
     } else {
       handleClose();
       Swal.fire({
-        icon: 'success',
-        title: 'Thank You For Shopping!',
-        text: 'We will send you an sms/email for more details of your order.',
-      })
+        icon: "success",
+        title: "Thank You For Shopping!",
+        text: "We will send you an sms/email for more details of your order.",
+      });
       dispatch(checkOut());
     }
-  }
+  };
 
   const dispatch = useDispatch();
   // state.cart => cart comes from store file
@@ -142,16 +149,16 @@ const Navbar = () => {
   };
 
   const placeOrder = () => {
-      if(sum == 0) {
-        Swal.fire({
-          icon: 'info',
-          title: 'Oops...',
-          text: 'Please select an item first',
-        })
-      } else {
-        handleOpen();
-      }
-      // dispatch(checkOut());
+    if (sum == 0) {
+      Swal.fire({
+        icon: "info",
+        title: "Oops...",
+        text: "Please select an item first",
+      });
+    } else {
+      handleOpen();
+    }
+    // dispatch(checkOut());
   };
   return (
     <Box>
@@ -176,31 +183,75 @@ const Navbar = () => {
               <h2 className="text-normal font-subtitle mb-2">
                 How do you want to pay?
               </h2>
-              <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-500 rounded-lg hover:border-indigo-400 duration-300">
-                <FormControlLabel value="grab" control={<Radio />} label="Grab"/>
-                <img src={grab} alt="grab" className="w-1/4 py-2" />
-              </Box>
 
-              <Box className="flex w-full items-center justify-around gap-2 mb-1 py-4 border border-black-300 rounded-lg hover:border-indigo-400 duration-300">
-                <FormControlLabel value="paymaya" control={<Radio />} label="Maya"/>
-                <img src={paymaya} alt="paymaya" className="w-1/4 py-2" />
-              </Box>
+              <AppTab
+                tabLabel1={"COD/Mobile Wallet"}
+                tabLabel2={"Online Banking"}
+                tabChildren1={
+                  <>
+                    <Box className="flex w-full items-center justify-around gap-2 mb-2 border border-black-500 rounded-lg hover:border-indigo-400 duration-300">
+                      <FormControlLabel
+                        value="grab"
+                        control={<Radio />}
+                        label="Grab"
+                      />
+                      <img src={grab} alt="grab" className="w-1/4 py-2" />
+                    </Box>
 
-              <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-300 rounded-lg hover:border-indigo-400 duration-300">
-                <FormControlLabel value="gcash" control={<Radio />} label='Gcash'/>
-                <img src={gcash} alt="gcash" className="w-1/4 py-2" />
-              </Box>
-              
-              <Box className="flex w-full items-center justify-around gap-2 mb-1 border border-black-300 rounded-lg hover:border-indigo-400 duration-300">
-                <FormControlLabel value="cod" control={<Radio />} label='Cash on Delivery'/>
-                <img src={cod} alt="cod" className="w-1/4" />
-              </Box>
+                    <Box className="flex w-full items-center justify-around gap-2 mb-2 py-4 border border-black-300 rounded-lg hover:border-indigo-400 duration-300">
+                      <FormControlLabel
+                        value="paymaya"
+                        control={<Radio />}
+                        label="Maya"
+                      />
+                      <img src={paymaya} alt="paymaya" className="w-1/4 py-2" />
+                    </Box>
 
+                    <Box className="flex w-full items-center justify-around gap-2 mb-2 border border-black-300 rounded-lg hover:border-indigo-400 duration-300">
+                      <FormControlLabel
+                        value="gcash"
+                        control={<Radio />}
+                        label="Gcash"
+                      />
+                      <img src={gcash} alt="gcash" className="w-1/4 py-2" />
+                    </Box>
+
+                    <Box className="flex w-full items-center justify-around gap-2 border border-black-300 rounded-lg hover:border-indigo-400 duration-300">
+                      <FormControlLabel
+                        value="cod"
+                        control={<Radio />}
+                        label="Cash on Delivery"
+                      />
+                      <img src={cod} alt="cod" className="w-1/4" />
+                    </Box>
+                  </>
+                }
+                tabChildren2={
+                  <>
+                    <Box className="flex w-full items-center justify-around gap-2 mb-2 border border-black-500 rounded-lg hover:border-indigo-400 duration-300">
+                      <FormControlLabel
+                        value="bpi"
+                        control={<Radio />}
+                        label="BPI"
+                      />
+                      <img src={bpi} alt="bpi" className="w-1/4 py-4" />
+                    </Box>
+
+                    <Box className="flex w-full items-center justify-around gap-2 mb-2 py-4 border border-black-300 rounded-lg hover:border-indigo-400 duration-300">
+                      <FormControlLabel
+                        value="ubp"
+                        control={<Radio />}
+                        label="UnionBank"
+                      />
+                      <img src={ubp} alt="union bank" className="w-1/3 py-2" />
+                    </Box>
+                  </>
+                }
+              />
             </RadioGroup>
-
           </FormControl>
           <h4 className="text-lg font-semibold font-subtitle text-right py-2">
-              Total: <span className="font-normal">₱{sum}.00</span>
+            Total: <span className="font-normal">₱{sum}.00</span>
           </h4>
           <Box className="mt-4 flex items-center gap-2">
             <button
@@ -217,8 +268,6 @@ const Navbar = () => {
             </button>
           </Box>
         </Box>
-
-        
       </Modal>
 
       <header
@@ -306,9 +355,11 @@ const Navbar = () => {
                         </h4>
                         {sum == 0 ? (
                           <>
-                          <h4>No Items Selected</h4>
+                            <h4>No Items Selected</h4>
                           </>
-                        ):(<></>)}
+                        ) : (
+                          <></>
+                        )}
                         {cartObj.map((item, index) => {
                           const {
                             id,
@@ -375,7 +426,7 @@ const Navbar = () => {
                                   </Box>
                                 </Box>
                               </Box>
-                              <hr/>
+                              <hr />
                             </>
                           );
                         })}
