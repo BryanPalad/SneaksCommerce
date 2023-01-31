@@ -26,13 +26,11 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 
 // icons
 import gcash from "../assets/img/payment/gcash.webp";
 import grab from "../assets/img/payment/grab.png";
 import paymaya from "../assets/img/payment/paymaya.png";
-import seveneleven from "../assets/img/payment/seveneleven.png";
 import cod from "../assets/img/payment/cod.png";
 import bpi from "../assets/img/payment/bpi.png";
 import ubp from "../assets/img/payment/ubp.png";
@@ -67,18 +65,22 @@ const Navbar = () => {
   const handlePay = () => {
     if (value === "grab") {
       window.open(
-        "https://weblogin.grab.com/auth?acr_values=consent_ctx%3AcountryCode%3DPH%2Ccurrency%3DPHP&auth_endpoint=https%3A%2F%2Fpartner-api.grab.com%2Fgrabid%2Fv1%2Foauth2%2Fauthorize&browser=IE%3A109.0&client_id=33437db2de45457ca3f5888bab187121&code_challenge=OVLJn0GT2HIKVqqeKJfN3rgGbybOUDTyJs6dlDZta6w&code_challenge_method=S256&ctx_id=37997391a7064b64bfa288c6da34dc38&device_type=Computer&forwardedHost=partner-api.grab.com&gw=pgw&nonce=5259526f-675b-440a-89ac-5bd85dbacee1&redirect_uri=https%3A%2F%2Fgrabpay-connector-live.xendit.co%2Fredirect&request=eyJhbGciOiAibm9uZSJ9.eyJjbGFpbXMiOnsidHJhbnNhY3Rpb24iOnsidHhJRCI6IjBjMWI3NmFhNWFlZDQzMjY4YzQ4YWNlNTgzMjdlMjRhIn19fQ.&request_id=80ab3b40-ca2e-41bb-a87b-91961f9b278f&response_type=code&scope=payment.one_time_charge&state=db618f5e-401a-4d29-a781-d1580eb16929"
+        "https://partner-api.grab.com/grabid/v1/oauth2/authorize?acr_values=consent_ctx%3AcountryCode%3DPH,currency%3DPHP&client_id=33437db2de45457ca3f5888bab187121&code_challenge=c-jMOMKG_e020i2oscfb_W7CYLQqfp2vBw4cgZioApo&code_challenge_method=S256&nonce=90ee4561-6aaa-4bea-bca3-078b6fb32aa0&redirect_uri=https://grabpay-connector-live.xendit.co/redirect&request=eyJhbGciOiAibm9uZSJ9.eyJjbGFpbXMiOnsidHJhbnNhY3Rpb24iOnsidHhJRCI6IjAyOTAyMjAzNDc3NTRkZGI4ZmE4Y2NjNzQyZjBmNmNhIn19fQ.&response_type=code&scope=payment.one_time_charge&state=8c63afa0-af51-4a89-89e8-d00e5e280c1c"
       );
     } else if (value === "paymaya") {
       window.open(
-        "https://payments.maya.ph/paymaya/payment?id=802e8998-e1e0-4d7e-a335-55bf4f61fbad"
+        "https://payments.maya.ph/paymaya/payment?id=524e099e-5684-4b50-8376-aa56912de0f7"
       );
     } else if (value === "gcash") {
       alert("gcash payment still in development");
     } else if (value === "bpi"){
-      alert("bpi payment still in development");
+      window.open(
+        "https://link-web.xendit.co/oauth/lat-7400a6b1-8818-4e94-a11a-4b07ecd51706/confirm"
+      );
     } else if (value === "ubp") {
-      alert("unionbank payment still in development");
+      window.open(
+        "https://link-web.xendit.co/oauth/lat-70d4cf77-be09-4e86-bcef-2129bea6c7cc/confirm"
+      );
     } else {
       handleClose();
       Swal.fire({
@@ -96,8 +98,6 @@ const Navbar = () => {
   const sum = cartObj.reduce((accumulator, object) => {
     return accumulator + object.origPrice * object.quantity;
   }, 0);
-
-  console.log(sum);
 
   const [navMobile, setNavMobile] = useState(false);
   const [shoppingCart, setShoppingCart] = useState(false);
@@ -350,7 +350,7 @@ const Navbar = () => {
                       className="fixed top-0 right-0 z-50 h-full bg-white px-8 py-4 overflow-auto"
                     >
                       <Box className="flex flex-col text-center mt-8 gap-4">
-                        <h4 className="text-2xl font-semibold font-main mb-8">
+                        <h4 className="text-2xl font-semibold font-main mb-2">
                           Your Cart
                         </h4>
                         {sum == 0 ? (
@@ -358,7 +358,7 @@ const Navbar = () => {
                             <h4>No Items Selected</h4>
                           </>
                         ) : (
-                          <></>
+                          <Box className='text-button'> {Object.keys(cartObj).length} item/s selected</Box>
                         )}
                         {cartObj.map((item, index) => {
                           const {
