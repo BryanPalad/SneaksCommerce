@@ -69,7 +69,7 @@ const Navbar = () => {
       );
     } else if (value === "paymaya") {
       window.open(
-        "https://payments.maya.ph/paymaya/payment?id=524e099e-5684-4b50-8376-aa56912de0f7"
+        "https://payments.maya.ph/paymaya/payment?id=82c37b63-b9b5-47df-9b2e-b545d868d282"
       );
     } else if (value === "gcash") {
       alert("gcash payment still in development");
