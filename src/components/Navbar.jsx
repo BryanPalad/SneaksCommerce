@@ -38,6 +38,8 @@ import ubp from "../assets/img/payment/ubp.png";
 import Swal from "sweetalert2";
 import AppTab from "./Tabs";
 
+import { createOrder, generateSign } from "../api";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -53,6 +55,11 @@ const style = {
 const Navbar = () => {
   // modal
   const [open, setOpen] = useState(false);
+  const [orderNo, setOrderNo] = useState();
+  const [description, setDescription] = useState();
+  const [paymentLink, setPaymentLink] = useState();
+  const [sign, setSign] = useState(null);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -64,23 +71,23 @@ const Navbar = () => {
 
   const handlePay = () => {
     if (value === "grab") {
-      window.open(
-        "https://partner-api.grab.com/grabid/v1/oauth2/authorize?acr_values=consent_ctx%3AcountryCode%3DPH,currency%3DPHP&client_id=33437db2de45457ca3f5888bab187121&code_challenge=c-jMOMKG_e020i2oscfb_W7CYLQqfp2vBw4cgZioApo&code_challenge_method=S256&nonce=90ee4561-6aaa-4bea-bca3-078b6fb32aa0&redirect_uri=https://grabpay-connector-live.xendit.co/redirect&request=eyJhbGciOiAibm9uZSJ9.eyJjbGFpbXMiOnsidHJhbnNhY3Rpb24iOnsidHhJRCI6IjAyOTAyMjAzNDc3NTRkZGI4ZmE4Y2NjNzQyZjBmNmNhIn19fQ.&response_type=code&scope=payment.one_time_charge&state=8c63afa0-af51-4a89-89e8-d00e5e280c1c"
-      );
+      pay("grabpay");
+      // window.open(
+      //   "https://partner-api.grab.com/grabid/v1/oauth2/authorize?acr_values=consent_ctx%3AcountryCode%3DPH,currency%3DPHP&client_id=33437db2de45457ca3f5888bab187121&code_challenge=c-jMOMKG_e020i2oscfb_W7CYLQqfp2vBw4cgZioApo&code_challenge_method=S256&nonce=90ee4561-6aaa-4bea-bca3-078b6fb32aa0&redirect_uri=https://grabpay-connector-live.xendit.co/redirect&request=eyJhbGciOiAibm9uZSJ9.eyJjbGFpbXMiOnsidHJhbnNhY3Rpb24iOnsidHhJRCI6IjAyOTAyMjAzNDc3NTRkZGI4ZmE4Y2NjNzQyZjBmNmNhIn19fQ.&response_type=code&scope=payment.one_time_charge&state=8c63afa0-af51-4a89-89e8-d00e5e280c1c"
+      // );
     } else if (value === "paymaya") {
+      pay("paymaya");
       window.open(
         "https://payments.maya.ph/paymaya/payment?id=82c37b63-b9b5-47df-9b2e-b545d868d282"
       );
     } else if (value === "gcash") {
-      alert("gcash payment still in development");
+      window.open(
+        "https://www.filipay.cc/en/cashier?qr=00020101021228530011ph.ppmi.p2m0111SRCPPHM2XXX0312MRCHNT-3TOH905030005204601053036085406299.005802PH5907Vendo%2016006Manila62540010ph.starpay0307Vendo%2010506OR%23AS30708testing_0803%2a%2a%2a88260012ph.ppmi.qrph0106OR%23AS36304776A&deeplink=gcash&amount=299.00&mdr=2.99"
+      );
     } else if (value === "bpi"){
-      window.open(
-        "https://link-web.xendit.co/oauth/lat-7400a6b1-8818-4e94-a11a-4b07ecd51706/confirm"
-      );
+      pay("bpi");
     } else if (value === "ubp") {
-      window.open(
-        "https://link-web.xendit.co/oauth/lat-70d4cf77-be09-4e86-bcef-2129bea6c7cc/confirm"
-      );
+      pay("ubp");
     } else {
       handleClose();
       Swal.fire({
@@ -91,6 +98,11 @@ const Navbar = () => {
       dispatch(checkOut());
     }
   };
+
+  const handleCheckOut = () => {
+    alert("test")
+    window.open(`https://testgateway.payloro.ph/api/cashier?payAmount=200&redirectUrl=https://www.google.com&name=zs&mobile=09281234567&sign=XvGbKf6bK3r4YzX8JcHKrImoyTGDJu16hjPOKANIN1qp-bQ6qp6mkdave-cC_BDA-D-NwNyT8mtCkO-JrsBZHSr-kjTIe1ZN-20-CiL7YPihsmw-COnsgMwg-eamaGVxYGzE5586LIXorqs2PL6UPHtmGayfuik-AvsFDzsM8ro&description=Testing&additionParameters=ABC&merchantOrderNo=testmerchant1681804115816&email=maidy@payloro.com&merchantNo=testmerchant`);
+  }
 
   const dispatch = useDispatch();
   // state.cart => cart comes from store file
@@ -107,8 +119,9 @@ const Navbar = () => {
   useEffect(() => {
     window.addEventListener("resize", () => {
       return window.innerWidth < 768 ? setCartSize(350) : setCartSize(400);
-    });
-  }, [cartObj]);
+    },
+    );
+  }, [cartObj, sign, description]);
 
   const openNav = () => {
     setNavMobile(true);
@@ -156,10 +169,73 @@ const Navbar = () => {
         text: "Please select an item first",
       });
     } else {
-      handleOpen();
+      Swal.fire({
+        title: 'Are you sure you want to place your order?',
+        text: "",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Checkout'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.open("https://www.filipay.cc/en/cashier?qr=00020101021228530011ph.ppmi.p2m0111SRCPPHM2XXX0312MRCHNT-3TOH905030005204601053036085406299.005802PH5907Vendo%2016006Manila62540010ph.starpay0307Vendo%2010506OR%23AS30708testing_0803%2a%2a%2a88260012ph.ppmi.qrph0106OR%23AS36304776A&deeplink=gcash&amount=299.00&mdr=2.99")
+          // alert('test');
+          // createYourOrder();
+        }
+      })
+      
     }
     // dispatch(checkOut());
   };
+
+  const createYourOrder = () => {
+    const cart = cartObj.map((item, index) => {
+      const { title } = item;
+      return title;
+    });
+    var cartDescription = cart.join(", ");
+    setDescription((prevState) => (prevState = cartDescription));
+    console.log(cartDescription + " description here");
+    const data = { remarks: cartDescription };
+  
+    createOrder(data)
+      .then((res) => {
+        console.log(res.data.data);
+        setOrderNo(res.data.data.transNo);
+        handleOpen();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const pay = (method) => {
+    const data = {
+      "description": description,
+      "email": "bry@payloro.com",
+      "merchantNo": "test_09455602846",
+      "merchantOrderNo": orderNo,
+      "method": method,
+      "mobile": "09455602846",
+      "name": "Bryan",
+      "payAmount": sum.toString(),
+      "sign": sign,
+    };
+  
+    generateSign(data)
+      .then((res) => {
+        console.log('sign generated');
+        console.log('paymentLink generated');
+        console.log(res.data.data.data.paymentLink);
+        
+          window.open(`${res.data.data.data.paymentLink}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <Box>
       <Button onClick={handleOpen}>Open modal</Button>
@@ -258,10 +334,19 @@ const Navbar = () => {
               className="text-lg w-1/2 border border-gray-200 px-2 py-1 rounded-lg bg-button text-white"
               onClick={handlePay}
             >
-              Pay
+              Pay (Option 1)
             </button>
             <button
-              className="text-lg w-1/2 border border-gray-200 px-2 py-1 rounded-lg bg-red text-white"
+              className="text-lg w-1/2 border border-gray-200 px-2 py-1 rounded-lg bg-button text-white"
+              onClick={handleCheckOut}
+            >
+              Checkout Counter
+            </button>
+          </Box>
+
+          <Box className="">
+            <button
+              className="mt-2 text-lg w-full border border-gray-200 px-2 py-1 rounded-lg bg-red text-white"
               onClick={handleClose}
             >
               Cancel
