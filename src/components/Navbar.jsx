@@ -179,7 +179,7 @@ const Navbar = () => {
         confirmButtonText: 'Checkout'
       }).then((result) => {
         if (result.isConfirmed) {
-          window.open("https://www.filipay.cc/en/cashier?qr=00020101021228530011ph.ppmi.p2m0111SRCPPHM2XXX0312MRCHNT-3TOH905030005204601053036085406299.005802PH5907Vendo%2016006Manila62540010ph.starpay0307Vendo%2010506OR%23AS30708testing_0803%2a%2a%2a88260012ph.ppmi.qrph0106OR%23AS36304776A&deeplink=gcash&amount=299.00&mdr=2.99")
+          window.open("http://gateway.esilver.top/qrph/ECH20231101162944468430833")
           // alert('test');
           // createYourOrder();
         }
