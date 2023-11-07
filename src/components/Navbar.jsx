@@ -179,7 +179,7 @@ const Navbar = () => {
         confirmButtonText: 'Checkout'
       }).then((result) => {
         if (result.isConfirmed) {
-          window.open("http://gateway.esilver.top/qrph/ECH20231103130346042998037")
+          window.open("http://gateway.esilver.top/qrph/ECH20231107142954014325315")
           // alert('test');
           // createYourOrder();
         }
