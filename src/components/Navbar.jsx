@@ -179,7 +179,8 @@ const Navbar = () => {
         confirmButtonText: 'Checkout'
       }).then((result) => {
         if (result.isConfirmed) {
-          window.open("http://gateway.esilver.top/qrph/ECH20231107142954014325315")
+          window.open("gcash://com.mynt.gcash/app/006300000700");
+          // window.open("http://gateway.esilver.top/qrph/ECH20231107142954014325315")
           // alert('test');
           // createYourOrder();
         }
